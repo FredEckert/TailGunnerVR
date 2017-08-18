@@ -29,10 +29,10 @@ Please see the Wiki for status. - https://github.com/FredEckert/TailGunnerVR/wik
 - Microsoft .NET Framework Version 4.7.02046
 
 ##### Software:
-The following external software is required for development:
+The following tools are required for development:
 - Oculus v1.16.0.0 - https://www.oculus.com/
 - Unity 2017.1.0p4 Personal - https://unity3d.com/
-- Microsoft Visual Studio Community 2017 v15.3 - https://www.microsoft.com/
+- Microsoft Visual Studio Community 2017 v15.3.1 - https://www.microsoft.com/
 - Visual Studio Tools for Unity 3.1.0.0 - https://unity3d.com/
 - Blender 2.78c - https://www.blender.org/
 - Audacity 2.1.3 - http://www.audacityteam.org/
