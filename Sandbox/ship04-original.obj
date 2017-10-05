@@ -1,0 +1,32 @@
+v -9.25 0.25 0
+v -7 0.25 3
+v -2 1 0
+v -7 0.25 -3
+v -4.25 -2.5 0
+v -6 1.5 2.25
+v -6 1.5 -2.25
+v 11 -1 -2
+v 11 -1 2
+v 9 2 -9
+v 9 2 9
+
+# cockpit lower
+f 1 2 5
+f 2 3 5
+f 1 4 5
+f 4 3 5
+# cockpit mid
+f 1 2 4
+# cockpit upper
+f 2 6 3
+f 4 7 3
+f 7 6 3
+# cockpit front window
+f 2 6 7 4
+# main fuselage
+f 5 8 3
+f 5 9 3		
+# left wing
+f 3 10 8			
+# right wing
+f 3 11 9       
