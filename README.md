@@ -30,19 +30,17 @@ Please see the Wiki for status. - https://github.com/FredEckert/TailGunnerVR/wik
 
 ##### Software:
 The following tools are used for development:
-- Oculus v1.23.0 - https://www.oculus.com/
+- Oculus v1.24.0 - https://www.oculus.com/
 - Unity 2017.3.1f1 Personal - https://unity3d.com/
 - Microsoft Visual Studio Community 2017 v15.6.4 - https://www.microsoft.com/
-- Visual Studio Tools for Unity 3.5.0.3 - https://unity3d.com/
+- Visual Studio Tools for Unity 3.6.0.5 - https://unity3d.com/
 - Vectrosity 5.5 - https://starscenesoftware.com
 - Audacity 2.2.1 - https://www.audacityteam.org/
 - Blender 2.79 - https://www.blender.org/
 - Gimp 2.8.22 - https://www.gimp.org/
 - Inkscape 0.92.2 - https://inkscape.org/en/
 
-###### NOTE
-
-The Vectrosity Unity asset is excluded in the .gitignore per licensing agreeement. You must purchase a copy and manually add it to the project.
+###### NOTE: The Vectrosity Unity asset is excluded via .gitignore per the licensing agreement. You must purchase a copy of Vectrosity and manually add it to the project.
 
 ### EXAMPLE
 
