@@ -10,9 +10,9 @@ TailGunnerVR - A clone of the 1979 Tail Gunner arcade game targeting the PC / Oc
 + VR - https://en.wikipedia.org/wiki/Virtual_reality
 
 
-### EXPLAINATION OF CODE
+### EXPLANATION OF CODE
 
-<!-- TODO: An explaination of the code can be found on the following blog posts: -->
+<!-- TODO: An explanation of the code can be found on the following blog posts: -->
 This project is in its early planning stages.  
 Please see the Wiki for status. - https://github.com/FredEckert/TailGunnerVR/wiki
 
