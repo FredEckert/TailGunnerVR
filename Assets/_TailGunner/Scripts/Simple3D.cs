@@ -10,7 +10,7 @@ public class Simple3D : MonoBehaviour
 
     public Material lineMaterial;
     public float lineWidth = 3.0f;
-    public Color lineColor = Color.blue;
+    public Color lineColor = Color.cyan;
 
     public TextAsset vectorCube; //new
 
