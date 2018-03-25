@@ -4,4 +4,7 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_TailGunner/_TailGunner.unity
+    guid: b1f2bb86708dd1f43be0908c53b44b4f
