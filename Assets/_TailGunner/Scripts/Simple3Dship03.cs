@@ -47,6 +47,10 @@ public class Simple3Dship03 : MonoBehaviour
         // Rotate the object around its local X axis at 1 degree per second * 50
         //transform.Rotate(Vector3.right * Time.deltaTime * 50);
         // ...also rotate around the World's Y axis * 50
-        transform.Rotate(Vector3.up * Time.deltaTime * 50, Space.World);
+        //transform.Rotate(Vector3.up * Time.deltaTime * 50, Space.World);
+
+        //rotate object around its local y axis at 1 degreee per second * 10
+        transform.Rotate(Vector3.up * Time.deltaTime * 10);
+
     }
 }

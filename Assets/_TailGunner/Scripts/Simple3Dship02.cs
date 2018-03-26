@@ -22,7 +22,8 @@ public class Simple3Dship02 : MonoBehaviour
 
         // Make a Vector3 array from the data stored in the vectorCube text asset
         // Try using different assets from the Vectors folder for different shapes (the collider will still be a cube though!)
-        //var ship01Points = VectorLine.BytesToVector3List(ship01Vector.bytes);
+        
+        //var ship02Points = VectorLine.BytesToVector3List(ship02Vector.bytes);
 
         // Make a line using the above points, with a width of 3 pixels
         //var line = new VectorLine(gameObject.name, cubePoints, 3.0f);
@@ -46,6 +47,10 @@ public class Simple3Dship02 : MonoBehaviour
         // Rotate the object around its local X axis at 1 degree per second * 50
         //transform.Rotate(Vector3.right * Time.deltaTime * 50);
         // ...also rotate around the World's Y axis * 50
-        transform.Rotate(Vector3.up * Time.deltaTime * 50, Space.World);
+        //transform.Rotate(Vector3.up * Time.deltaTime * 50, Space.World);
+
+        //rotate object around its local y axis at 1 degreee per second * 10
+        transform.Rotate(Vector3.up * Time.deltaTime * 10);
+
     }
 }
