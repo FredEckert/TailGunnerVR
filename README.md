@@ -24,21 +24,22 @@ Please see the Wiki for status. - https://github.com/FredEckert/TailGunnerVR/wik
 - Logitech Rumble Gamepad F510 (XInput mode)
 - Chair
 
-##### Operating system:
-- Microsoft Windows 10 Pro (x64) v1709
-- Microsoft .NET Framework Version 4.7.02556
+##### Operating environment:
+- Microsoft Windows 10 Pro (x64) v1803
+- Microsoft .NET Framework Version 4.7.03056
+- NVidia Quadro P4000 Driver Version 397.31
 
 ##### Software:
 The following tools are used for development:
-- Oculus v1.24.0 - https://www.oculus.com/
-- Unity 2017.3.1f1 Personal - https://unity3d.com/
-- Microsoft Visual Studio Community 2017 v15.6.4 - https://www.microsoft.com/
-- Visual Studio Tools for Unity 3.6.0.5 - https://unity3d.com/
-- Vectrosity 5.5 - https://starscenesoftware.com
-- Audacity 2.2.1 - https://www.audacityteam.org/
-- Blender 2.79 - https://www.blender.org/
-- Gimp 2.8.22 - https://www.gimp.org/
-- Inkscape 0.92.2 - https://inkscape.org/en/
+- Oculus v1.25.0 - https://www.oculus.com/
+- Unity 2017.4.2f2 Personal - https://unity3d.com/
+- Microsoft Visual Studio Community 2017 v15.7.0 - https://www.microsoft.com/
+- Visual Studio Tools for Unity 3.7.0.1 - https://unity3d.com/
+- Vectrosity 5.6 - https://starscenesoftware.com
+- Audacity 2.2.2 - https://www.audacityteam.org/
+- Blender 2.79b - https://www.blender.org/
+- Gimp 2.10.0 - https://www.gimp.org/
+- Inkscape 0.92.3 - https://inkscape.org/en/
 
 ###### NOTE: The Vectrosity Unity asset is excluded via .gitignore per the licensing agreement. You must purchase a copy of Vectrosity and manually add it to the project.
 
