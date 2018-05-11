@@ -14,6 +14,8 @@ public class Simple3DTitle : MonoBehaviour
 
     public TextAsset titleVector;
 
+    private VectorLine line;
+
     // Use this for initialization
     void Start()
     {
@@ -30,7 +32,7 @@ public class Simple3DTitle : MonoBehaviour
 
         // Make a line using the above points, with a width of 3 pixels
         //var line = new VectorLine(gameObject.name, cubePoints, 3.0f);
-        var line = new VectorLine(gameObject.name, titlePoints, lineWidth);
+        line = new VectorLine(gameObject.name, titlePoints, lineWidth);
         line.material = lineMaterial;
         line.color = lineColor;
 
@@ -47,13 +49,19 @@ public class Simple3DTitle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Rotate the object around its local X axis at 1 degree per second * 50
-        //transform.Rotate(Vector3.right * Time.deltaTime * 50);
-        // ...also rotate around the World's Y axis * 50
-        //transform.Rotate(Vector3.up * Time.deltaTime * 50, Space.World);
 
-        //rotate object around its local x axis at 1 degreee per second * 120
-        transform.Rotate(Vector3.left * Time.deltaTime * 120);
+        if (transform.position.z > 200)
+        {
+            //blank out title when banner is inverted
+            if (transform.eulerAngles.x < 180)
+                line.color = lineColor;
+            else
+                line.SetColor(Color.clear, 0, 30);
+            //translate title banner through world space towards the player at 1 meter per second * 240
+            transform.Translate(Vector3.back * Time.deltaTime * 240, Space.World);
+            //rotate title banner around its local X axis at 1 degreee per second * 240
+            transform.Rotate(Vector3.left * Time.deltaTime * 240);
+        }
 
     }
 }
