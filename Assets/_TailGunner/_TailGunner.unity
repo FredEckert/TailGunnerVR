@@ -306,7 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineMaterial: {fileID: 0}
   lineWidth: 2
-  lineColor: {r: 0, g: 1, b: 1, a: 1}
+  lineColor: {r: 0, g: 0.5019608, b: 0.7254902, a: 1}
   ship04Vector: {fileID: 0}
 --- !u!1 &223550455
 GameObject:
@@ -475,7 +475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineMaterial: {fileID: 0}
   lineWidth: 2
-  lineColor: {r: 0, g: 1, b: 1, a: 1}
+  lineColor: {r: 0, g: 0.5019608, b: 0.7254902, a: 1}
   ship02Vector: {fileID: 0}
 --- !u!23 &306759460
 MeshRenderer:
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineMaterial: {fileID: 0}
   lineWidth: 2
-  lineColor: {r: 0, g: 1, b: 1, a: 1}
+  lineColor: {r: 0, g: 0.5019608, b: 0.7254902, a: 1}
   titleVector: {fileID: 0}
 --- !u!23 &444772575
 MeshRenderer:
@@ -639,7 +639,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 444772573}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 2000}
+  m_LocalPosition: {x: 0, y: 0, z: 1880}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -920,7 +920,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 1, b: 1, a: 1}
+      maxColor: {r: 0, g: 0.5019608, b: 0.7254902, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4470,7 +4470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineMaterial: {fileID: 0}
   lineWidth: 2
-  lineColor: {r: 0, g: 1, b: 1, a: 1}
+  lineColor: {r: 0, g: 0.5019608, b: 0.7254902, a: 1}
   ship03Vector: {fileID: 0}
 --- !u!23 &1596707468
 MeshRenderer:
@@ -4570,7 +4570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineMaterial: {fileID: 0}
   lineWidth: 2
-  lineColor: {r: 0, g: 1, b: 1, a: 1}
+  lineColor: {r: 0, g: 0.5019608, b: 0.7254902, a: 1}
   ship01Vector: {fileID: 0}
 --- !u!23 &1630961627
 MeshRenderer:
