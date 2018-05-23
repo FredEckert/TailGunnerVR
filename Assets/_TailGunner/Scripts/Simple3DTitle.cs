@@ -15,10 +15,10 @@ public class Simple3DTitle : MonoBehaviour
 
     private float starttime;
     private Color32 colorStart = new Color(0, 0.5019608f, 0.7254902f, 1);
-    private Color32 colorOne = new Color(0, 0.5019608f, 0.7254902f, 1);
+    private Color32 color1 = new Color(0, 0.5019608f, 0.7254902f, 1);
     private Color32 colorEnd = new Color(0, 1, 1, 1);
-    private Color32 colorTwo = new Color(0, 1, 1, 1);
-    private float duration = (float)0.5;
+    private Color32 color2 = new Color(0, 1, 1, 1);
+    private float duration = (float)0.333;
     private bool toggle = false;
 
     // Use this for initialization
@@ -70,22 +70,22 @@ public class Simple3DTitle : MonoBehaviour
         {
             //lerp boarder color
             var myLerp = Mathf.Lerp(0, 1, (Time.time - starttime) / duration);
-            var c = Color.Lerp(colorOne, colorTwo, myLerp);
-            line.SetColor(c, 31, 47);
+            var c = Color.Lerp(color1, color2, myLerp);
+            line.color = c;
             //invert colors
-            if (c == colorTwo)
+            if (c == color2)
             {
                 if (toggle)
                 {
                     toggle = !toggle;
-                    colorOne = colorStart;
-                    colorTwo = colorEnd;
+                    color1 = colorStart;
+                    color2 = colorEnd;
                 }
                 else
                 { 
                     toggle = !toggle;
-                    colorOne = colorEnd;
-                    colorTwo = colorStart;
+                    color1 = colorEnd;
+                    color2 = colorStart;
                 }
                 starttime = Time.time;
             }
