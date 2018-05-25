@@ -16,12 +16,17 @@ public class Simple3DTitle : MonoBehaviour
     private Color32 colorIntense;
     private Color32 color1;
     private Color32 color2;
-    private float duration = (float)0.333;
+    private float duration = (float)0.2;
     private bool toggle = false;
 
     // Use this for initialization
     void Start()
     {
+        //initialize object
+        this.gameObject.transform.position = new Vector3(0, 0, 1940);
+        this.gameObject.transform.rotation = new Quaternion(90, 0, 0, 0);
+        lineWidth = 2;
+
         //initialize colors
         colorNormal = lineColor;
         colorIntense = Color.cyan;
@@ -46,6 +51,8 @@ public class Simple3DTitle : MonoBehaviour
 
         // Make VectorManager lines be drawn in the scene instead of as an overlay
         VectorManager.useDraw3D = true;
+
+        Destroy(gameObject, 8.4f);
     }
 
     // Update is called once per frame
