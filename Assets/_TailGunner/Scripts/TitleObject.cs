@@ -3,35 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using Vectrosity;
 
-public class Simple3DTitle : MonoBehaviour
-{
-    public Material lineMaterial;
-    public float lineWidth = 3.0f;
-    public Color32 lineColor = new Color(0, 0.5019608f, 0.7254902f, 1);
-    public TextAsset titleVector;
+public class TitleObject : MonoBehaviour {
+
     private VectorLine line;
 
-    private float starttime;
     private Color32 colorNormal;
     private Color32 colorIntense;
     private Color32 color1;
     private Color32 color2;
-    private float duration = (float)0.2;
+
+    private float starttime;
+    float duration = (float)0.2;
     private bool toggle = false;
 
     // Use this for initialization
     void Start()
     {
+        //TextAsset titleVector;
+
         //initialize object
         this.gameObject.transform.position = new Vector3(0, 0, 1940);
         this.gameObject.transform.rotation = new Quaternion(90, 0, 0, 0);
-        lineWidth = 2;
 
         //initialize colors
-        colorNormal = lineColor;
-        colorIntense = Color.cyan;
-        color1 = colorNormal;
-        color2 = colorIntense;
+        color1 = colorNormal = Manager.use.colorNormal;
+        color2 = colorIntense = Manager.use.colorIntense;
 
         // Make a Vector3 array that contains points for title
         //entire title and boarder
@@ -40,10 +36,12 @@ public class Simple3DTitle : MonoBehaviour
         // Make a Vector3 array from the data stored in the vectorCube text asset
         //var titlePoints = VectorLine.BytesToVector3List(titleVector.bytes);
 
+        float lineWidth = Manager.use.lineWidth;
         // Make a line using the above points, with a width of lineWidth pixels
         line = new VectorLine(gameObject.name, titlePoints, lineWidth);
-        line.material = lineMaterial;
-        line.color = lineColor;
+        line.material = Manager.use.lineMaterial;
+        line.color = colorNormal;
+        line.capLength = Manager.use.capLength;
 
         // Make this transform have the vector line object that's defined above
         // This object is a rigidbody, so the vector object will do exactly what this object does
@@ -62,7 +60,7 @@ public class Simple3DTitle : MonoBehaviour
         {
             //blank out title when banner is inverted
             if (transform.eulerAngles.x < 180)
-                line.color = lineColor;
+                line.color = colorNormal;
             else
                 line.SetColor(Color.clear, 0, 30);
             //translate title banner through world space towards the player at 1 meter per second * 240
@@ -88,7 +86,7 @@ public class Simple3DTitle : MonoBehaviour
                     color2 = colorIntense;
                 }
                 else
-                { 
+                {
                     toggle = !toggle;
                     color1 = colorIntense;
                     color2 = colorNormal;
