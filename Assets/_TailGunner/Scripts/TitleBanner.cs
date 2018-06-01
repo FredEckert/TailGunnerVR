@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Vectrosity;
 
-public class TitleObject : MonoBehaviour {
+public class TitleBanner : MonoBehaviour
+{
 
     private VectorLine line;
 
@@ -36,9 +37,8 @@ public class TitleObject : MonoBehaviour {
         // Make a Vector3 array from the data stored in the vectorCube text asset
         //var titlePoints = VectorLine.BytesToVector3List(titleVector.bytes);
 
-        float lineWidth = Manager.use.lineWidth;
         // Make a line using the above points, with a width of lineWidth pixels
-        line = new VectorLine(gameObject.name, titlePoints, lineWidth);
+        line = new VectorLine(gameObject.name, titlePoints, Manager.use.lineWidth);
         line.material = Manager.use.lineMaterial;
         line.color = colorNormal;
         line.capLength = Manager.use.capLength;

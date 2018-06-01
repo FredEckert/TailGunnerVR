@@ -38,7 +38,7 @@ public class Manager : MonoBehaviour
 
     void TitleDisplay()
     {
-        new GameObject("Title").AddComponent<TitleObject>();
+        new GameObject("TitleBanner").AddComponent<TitleBanner>();
     }
 
 }
