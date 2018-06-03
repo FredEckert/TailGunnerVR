@@ -552,6 +552,7 @@ GameObject:
   m_Component:
   - component: {fileID: 353718867}
   - component: {fileID: 353718866}
+  - component: {fileID: 353718868}
   m_Layer: 0
   m_Name: _Manager
   m_TagString: Untagged
@@ -593,6 +594,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &353718868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 353718865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b38ee55d88e2e409fafd72478e8a03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship01: {fileID: 4900000, guid: 7f3596c455cfa8c468813e153d0b74c6, type: 3}
+  ship02: {fileID: 4900000, guid: a77cc551d1763624284791d6e241aa30, type: 3}
+  ship03: {fileID: 4900000, guid: 39a0772691175c74599ef23f001358bd, type: 3}
+  ship04: {fileID: 4900000, guid: 21ec41ef35ee2e04ea165328fed1e3f0, type: 3}
+  title: {fileID: 4900000, guid: 5f152014ba320c84ca7b0167be6d9895, type: 3}
+  ship01Points: []
+  ship02Points: []
+  ship03Points: []
+  ship04Points: []
+  titlePoints: []
+  targetReticlePoints: []
 --- !u!1 &444772573
 GameObject:
   m_ObjectHideFlags: 0

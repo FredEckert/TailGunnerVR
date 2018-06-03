@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Vectrosity;
 
 public class TitleBanner : MonoBehaviour
 {
-
     private VectorLine line;
 
     private Color32 colorNormal;
@@ -20,8 +17,6 @@ public class TitleBanner : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //TextAsset titleVector;
-
         //initialize object
         this.gameObject.transform.position = new Vector3(0, 0, 1940);
         this.gameObject.transform.rotation = new Quaternion(90, 0, 0, 0);
@@ -30,17 +25,11 @@ public class TitleBanner : MonoBehaviour
         color1 = colorNormal = Manager.use.colorNormal;
         color2 = colorIntense = Manager.use.colorIntense;
 
-        // Make a Vector3 array that contains points for title
-        //entire title and boarder
-        var titlePoints = new List<Vector3> { new Vector3(-9.693f, 0f, -12.45f), new Vector3(-18.424f, 0f, -12.45f), new Vector3(-13.926f, 0f, -12.45f), new Vector3(-13.926f, 0f, -2.663f), new Vector3(-4.136f, 0f, -12.186f), new Vector3(-7.312f, 0f, -2.663f), new Vector3(-4.136f, 0f, -12.186f), new Vector3(-0.961f, 0f, -2.663f), new Vector3(-2.496f, 0f, -7.424f), new Vector3(-5.777f, 0f, -7.424f), new Vector3(4.86f, 0f, -12.186f), new Vector3(4.86f, 0f, -2.663f), new Vector3(11.474f, 0f, -12.186f), new Vector3(11.474f, 0f, -2.663f), new Vector3(17.824f, 0f, -2.663f), new Vector3(11.474f, 0f, -2.663f), new Vector3(-20.806f, 0f, -0.017f), new Vector3(-27.156f, 0f, -0.017f), new Vector3(-27.156f, 0f, 9.77f), new Vector3(-27.156f, 0f, -0.017f), new Vector3(-20.541f, 0f, 9.77f), new Vector3(-27.156f, 0f, 9.77f), new Vector3(-20.541f, 0f, 9.77f), new Vector3(-20.541f, 0f, 5.802f), new Vector3(-19.218f, 0f, 5.802f), new Vector3(-21.864f, 0f, 5.802f), new Vector3(-17.366f, 0f, -0.017f), new Vector3(-17.366f, 0f, 9.77f), new Vector3(-10.751f, 0f, 9.77f), new Vector3(-17.366f, 0f, 9.77f), new Vector3(-10.751f, 0f, 9.77f), new Vector3(-10.751f, 0f, -0.017f), new Vector3(-7.312f, 0f, -0.017f), new Vector3(-7.312f, 0f, 9.77f), new Vector3(-0.961f, 0f, 9.77f), new Vector3(-7.312f, 0f, -0.017f), new Vector3(-0.961f, 0f, 9.77f), new Vector3(-0.961f, 0f, -0.017f), new Vector3(1.684f, 0f, -0.017f), new Vector3(1.684f, 0f, 9.77f), new Vector3(8.035f, 0f, 9.77f), new Vector3(1.684f, 0f, -0.017f), new Vector3(8.035f, 0f, 9.77f), new Vector3(8.035f, 0f, -0.017f), new Vector3(18.089f, 0f, -0.017f), new Vector3(11.474f, 0f, -0.017f), new Vector3(11.474f, 0f, 9.77f), new Vector3(11.474f, 0f, -0.017f), new Vector3(11.474f, 0f, 9.77f), new Vector3(18.089f, 0f, 9.77f), new Vector3(11.474f, 0f, 4.744f), new Vector3(14.649f, 0f, 4.744f), new Vector3(21.264f, 0f, 9.77f), new Vector3(21.264f, 0f, -0.017f), new Vector3(27.879f, 0f, -0.017f), new Vector3(21.264f, 0f, -0.017f), new Vector3(27.879f, 0f, 4.744f), new Vector3(27.879f, 0f, -0.017f), new Vector3(21.264f, 0f, 4.744f), new Vector3(27.879f, 0f, 4.744f), new Vector3(27.879f, 0f, 9.77f), new Vector3(26.291f, 0f, 4.744f), new Vector3(-30.331f, 0f, -15.625f), new Vector3(31.054f, 0f, -15.625f), new Vector3(31.054f, 0f, -15.625f), new Vector3(31.054f, 0f, 12.945f), new Vector3(-30.331f, 0f, 12.945f), new Vector3(31.054f, 0f, 12.945f), new Vector3(-30.331f, 0f, -15.625f), new Vector3(-30.331f, 0f, 12.945f), new Vector3(-34.961f, 0f, -20.122f), new Vector3(35.42f, 0f, -20.122f), new Vector3(35.42f, 0f, -20.122f), new Vector3(35.42f, 0f, 17.442f), new Vector3(-34.961f, 0f, 17.442f), new Vector3(35.42f, 0f, 17.442f), new Vector3(-34.961f, 0f, -20.122f), new Vector3(-34.961f, 0f, 17.442f) };
-
-        // Make a Vector3 array from the data stored in the vectorCube text asset
-        //var titlePoints = VectorLine.BytesToVector3List(titleVector.bytes);
-
-        // Make a line using the above points, with a width of lineWidth pixels
-        line = new VectorLine(gameObject.name, titlePoints, Manager.use.lineWidth);
+        //create line "TitleBanner"
+        line = new VectorLine(gameObject.name, LineData.use.titlePoints, Manager.use.lineWidth);
         line.material = Manager.use.lineMaterial;
-        line.color = colorNormal;
+        line.texture = Manager.use.lineTexture;
+        line.color = Manager.use.colorNormal;
         line.capLength = Manager.use.capLength;
 
         // Make this transform have the vector line object that's defined above

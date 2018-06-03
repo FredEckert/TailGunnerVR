@@ -58,8 +58,9 @@ public class TailgUI : MonoBehaviour
     public virtual void AddToScore(int points)
     {
         this.score = this.score + points;
-        string thisScore = this.score.ToString("00");
+        string thisScore = this.score.ToString("00"); // Always have 2+ digits even when score is 0
         this.currentStrings[0] = "Score";
+        // Format score using a substring from scoreString, depending on thisScore's length, so it's right-justified
         this.currentStrings[1] = scoreString.Substring(0, 4 - thisScore.Length) + thisScore;
         this.charLines[0].MakeText(this.currentStrings[0], new Vector3(-750, 600, 1800), 50);
         this.charLines[1].MakeText(this.currentStrings[1], new Vector3(-720, 500, 1800), 50);
