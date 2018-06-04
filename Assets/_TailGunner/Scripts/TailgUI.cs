@@ -26,10 +26,10 @@ public class TailgUI : MonoBehaviour
         TailgUI.use = this;
     }
 
-    // Use this for initialization
-    void Start()
-    {
 
+
+    public void StartUp()
+    {
         this.scoreString = "    ";
         this.scoreString2 = "    ";
         this.charLines = new VectorLine[5];
@@ -42,8 +42,8 @@ public class TailgUI : MonoBehaviour
         this.charLines[2] = this.MakeLine("Highscore", new System.Collections.Generic.List<Vector3>(2));
         this.charLines[3] = this.MakeLine("TheHighscore", new System.Collections.Generic.List<Vector3>(2));
 
-        //this.AddToScore(8);
-        this.AddToScore(2439);
+        //this.AddToScore(1);
+        //this.AddToScore(2439);
     }
 
     public virtual VectorLine MakeLine(string name, System.Collections.Generic.List<Vector3> list)

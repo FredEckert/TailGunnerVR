@@ -12,6 +12,8 @@ public class Manager : MonoBehaviour
     [UnityEngine.HideInInspector]
     public float capLength;
 
+    public ParticleSystem Starfield;
+
     public static Manager use;
 
     public virtual void Awake()
@@ -21,12 +23,30 @@ public class Manager : MonoBehaviour
         //    Debug.Log("For best results, make sure the scene view isn't active in play mode, since the scene view camera interferes with visibility calculations");
         //}
         Manager.use = this;
+
         this.capLength = this.lineWidth * 0.05f;
     }
 
     // Use this for initialization
     void Start()
     {
+        //Display UI
+        TailgUI.use.StartUp();
+        TailgUI.use.score = -1;
+        TailgUI.use.highscore = -1;
+        TailgUI.use.AddToScore(1);
+
+        //Display Starfield
+        if (Starfield != null)
+        {
+            var main = Starfield.main;
+            main.startDelay = 1.0f;
+            main.startLifetime = 2.0f;
+            main.startColor = new ParticleSystem.MinMaxGradient(this.colorNormal);
+            Instantiate(Starfield);
+        }
+
+        //Display Title
         InvokeRepeating("TitleDisplay", 0, 10);
     }
 
