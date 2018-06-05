@@ -13,6 +13,10 @@ public class Manager : MonoBehaviour
     public float capLength;
 
     public ParticleSystem Starfield;
+    public GameObject EnemyShip1;
+    public GameObject EnemyShip2;
+    public GameObject EnemyShip3;
+    public GameObject EnemyShip4;
 
     public static Manager use;
 
@@ -40,7 +44,7 @@ public class Manager : MonoBehaviour
         if (Starfield != null)
         {
             var main = Starfield.main;
-            main.startDelay = 1.0f;
+            main.startDelay = 2.0f;
             main.startLifetime = 2.0f;
             main.startColor = new ParticleSystem.MinMaxGradient(this.colorNormal);
             Instantiate(Starfield);
@@ -48,12 +52,57 @@ public class Manager : MonoBehaviour
 
         //Display Title
         InvokeRepeating("TitleDisplay", 0, 10);
+
+        //Display EnemyShip1 after 10 seconds
+        Invoke("EnemyShip1Display", 10.0f);
+
+        //Display EnemyShip2 after 20 seconds
+        Invoke("EnemyShip2Display", 20.0f);
+
+        //Display EnemyShip3 after 30 seconds
+        Invoke("EnemyShip3Display", 30.0f);
+
+        //Display EnemyShip4 after 30 seconds
+        Invoke("EnemyShip4Display", 40.0f);
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    void EnemyShip1Display()
+    {
+        if (EnemyShip1 != null)
+        {
+            Instantiate(EnemyShip1);
+        }
+    }
+
+    void EnemyShip2Display()
+    {
+        if (EnemyShip2 != null)
+        {
+            Instantiate(EnemyShip2);
+        }
+    }
+
+    void EnemyShip3Display()
+    {
+        if (EnemyShip3 != null)
+        {
+            Instantiate(EnemyShip3);
+        }
+    }
+
+    void EnemyShip4Display()
+    {
+        if (EnemyShip4 != null)
+        {
+            Instantiate(EnemyShip4);
+        }
     }
 
     void TitleDisplay()
