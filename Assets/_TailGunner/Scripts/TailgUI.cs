@@ -17,7 +17,7 @@ public class TailgUI : MonoBehaviour
     private string scoreString2;
     private string[] currentStrings;
 
-    public static VectorLine targetReticle;
+    public static VectorLine Reticle;
 
     public static TailgUI use;
 
