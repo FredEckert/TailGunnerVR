@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using Vectrosity;
 
-public class Simple3Dship04 : MonoBehaviour
+public class Ship4Control : MonoBehaviour
 {
     // Use this for initialization
     void Start()
     {
-        //create line "Simple3Dship04"
-        var line = new VectorLine(gameObject.name, LineData.use.ship04Points, Manager.use.lineWidth);
+        var line = new VectorLine("EnemyShip", LineData.use.Ship4Points, Manager.use.lineWidth);
         line.material = Manager.use.lineMaterial;
         line.texture = Manager.use.lineTexture;
         line.color = Manager.use.colorNormal;
