@@ -5,7 +5,12 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - ship1: {fileID: 4900000, guid: 7f3596c455cfa8c468813e153d0b74c6, type: 3}
+  - ship2: {fileID: 4900000, guid: a77cc551d1763624284791d6e241aa30, type: 3}
+  - ship3: {fileID: 4900000, guid: 39a0772691175c74599ef23f001358bd, type: 3}
+  - ship4: {fileID: 4900000, guid: 21ec41ef35ee2e04ea165328fed1e3f0, type: 3}
+  - title: {fileID: 4900000, guid: 5f152014ba320c84ca7b0167be6d9895, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

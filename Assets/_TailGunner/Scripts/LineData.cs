@@ -13,10 +13,10 @@ public class LineData : MonoBehaviour
     public TextAsset ship4;
     public TextAsset title;
 
-    public System.Collections.Generic.List<Vector3> Ship1Points;
-    public System.Collections.Generic.List<Vector3> Ship2Points;
-    public System.Collections.Generic.List<Vector3> Ship3Points;
-    public System.Collections.Generic.List<Vector3> Ship4Points;
+    public System.Collections.Generic.List<Vector3> ship1Points;
+    public System.Collections.Generic.List<Vector3> ship2Points;
+    public System.Collections.Generic.List<Vector3> ship3Points;
+    public System.Collections.Generic.List<Vector3> ship4Points;
     public System.Collections.Generic.List<Vector3> titlePoints;
 
     public System.Collections.Generic.List<Vector3> ReticlePoints;
@@ -24,10 +24,10 @@ public class LineData : MonoBehaviour
     public virtual void Awake()
     {
         LineData.use = this;
-        this.Ship1Points = VectorLine.BytesToVector3List(this.ship1.bytes);
-        this.Ship2Points = VectorLine.BytesToVector3List(this.ship2.bytes);
-        this.Ship3Points = VectorLine.BytesToVector3List(this.ship3.bytes);
-        this.Ship4Points = VectorLine.BytesToVector3List(this.ship4.bytes);
+        this.ship1Points = VectorLine.BytesToVector3List(this.ship1.bytes);
+        this.ship2Points = VectorLine.BytesToVector3List(this.ship2.bytes);
+        this.ship3Points = VectorLine.BytesToVector3List(this.ship3.bytes);
+        this.ship4Points = VectorLine.BytesToVector3List(this.ship4.bytes);
         this.titlePoints = VectorLine.BytesToVector3List(this.title.bytes);
 
         // Exploded ship parts

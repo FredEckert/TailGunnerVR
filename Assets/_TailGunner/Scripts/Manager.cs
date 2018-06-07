@@ -13,10 +13,9 @@ public class Manager : MonoBehaviour
     public float capLength;
 
     public ParticleSystem Starfield;
-    public GameObject EnemyShip1;
-    public GameObject EnemyShip2;
-    public GameObject EnemyShip3;
-    public GameObject EnemyShip4;
+
+    public GameObject EnemyShip;
+    public Transform EnemyShipTransform;
 
     public static Manager use;
 
@@ -45,25 +44,16 @@ public class Manager : MonoBehaviour
         {
             var main = Starfield.main;
             main.startDelay = 2.0f;
-            main.startLifetime = 2.0f;
+            main.startLifetime = 4.0f;
             main.startColor = new ParticleSystem.MinMaxGradient(this.colorNormal);
             Instantiate(Starfield);
         }
 
         //Display Title
-        InvokeRepeating("TitleDisplay", 0, 10);
+        InvokeRepeating("DisplayTitle", 0, 10);
 
-        //Display EnemyShip1 after 10 seconds
-        Invoke("EnemyShip1Display", 10.0f);
-
-        //Display EnemyShip2 after 20 seconds
-        Invoke("EnemyShip2Display", 20.0f);
-
-        //Display EnemyShip3 after 30 seconds
-        Invoke("EnemyShip3Display", 30.0f);
-
-        //Display EnemyShip4 after 30 seconds
-        Invoke("EnemyShip4Display", 40.0f);
+        //Display Enemy
+        Invoke("DisplayEnemy", 10.0f);
 
     }
 
@@ -73,39 +63,22 @@ public class Manager : MonoBehaviour
 
     }
 
-    void EnemyShip1Display()
+    void DisplayEnemy()
     {
-        if (EnemyShip1 != null)
+        if (EnemyShip != null)
         {
-            Instantiate(EnemyShip1);
+            EnemyShipTransform.position = new Vector3(-10, 5, 25);
+            Instantiate(EnemyShip);
+            EnemyShipTransform.position = new Vector3(10, 5, 25);
+            Instantiate(EnemyShip);
+            EnemyShipTransform.position = new Vector3(-10, -5, 25);
+            Instantiate(EnemyShip);
+            EnemyShipTransform.position = new Vector3(10, -5, 25);
+            Instantiate(EnemyShip);
         }
     }
 
-    void EnemyShip2Display()
-    {
-        if (EnemyShip2 != null)
-        {
-            Instantiate(EnemyShip2);
-        }
-    }
-
-    void EnemyShip3Display()
-    {
-        if (EnemyShip3 != null)
-        {
-            Instantiate(EnemyShip3);
-        }
-    }
-
-    void EnemyShip4Display()
-    {
-        if (EnemyShip4 != null)
-        {
-            Instantiate(EnemyShip4);
-        }
-    }
-
-    void TitleDisplay()
+    void DisplayTitle()
     {
         new GameObject("TitleBanner").AddComponent<TitleBanner>();
     }

@@ -5,7 +5,15 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - lineMaterial: {instanceID: 0}
+  - lineTexture: {instanceID: 0}
+  - Starfield: {fileID: 198662677241458530, guid: ffa24e4f9c0f0714d8d343d181619046,
+      type: 2}
+  - EnemyShip: {fileID: 1558834117921768, guid: 82ee536a239ed294ba59595f894115f8,
+      type: 2}
+  - EnemyShipTransform: {fileID: 4158499803406772, guid: 82ee536a239ed294ba59595f894115f8,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
