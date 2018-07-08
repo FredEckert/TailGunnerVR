@@ -17,7 +17,7 @@ public class EnemyShipControl : MonoBehaviour
         line.capLength = Manager.use.capLength;
 
         // Make this transform have the vector line object that's defined above
-        // This object is a rigidbody, so the vector object will do exactly what this object does
+        // This object is a rigid body, so the vector object will do exactly what this object does
         VectorManager.ObjectSetup(gameObject, line, Visibility.Dynamic, Brightness.None);
         // Make VectorManager lines be drawn in the scene instead of as an overlay
         VectorManager.useDraw3D = true;
@@ -26,7 +26,7 @@ public class EnemyShipControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //rotate object around its local y axis at 1 degreee per second * 10
+        //rotate object around its local y axis at 1 degree per second * 10
         transform.Rotate(Vector3.up * Time.deltaTime * 10);
     }
 }

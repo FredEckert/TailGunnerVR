@@ -49,6 +49,7 @@ public class TailgUI : MonoBehaviour
     public virtual VectorLine MakeLine(string name, System.Collections.Generic.List<Vector3> list)
     {
         var line = new VectorLine(name, list, Manager.use.lineWidth);
+        line.texture = Manager.use.lineTexture;
         line.material = Manager.use.lineMaterial;
         line.color = Manager.use.colorNormal;
         line.capLength = Manager.use.capLength;

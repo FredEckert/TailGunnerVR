@@ -33,6 +33,9 @@ public class Manager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        //delay for oculus fade in complete
+        float startUpDelay = 2.5f;
+
         //Display UI
         TailgUI.use.StartUp();
         TailgUI.use.score = -1;
@@ -43,17 +46,20 @@ public class Manager : MonoBehaviour
         if (Starfield != null)
         {
             var main = Starfield.main;
-            main.startDelay = 2.0f;
+            main.startDelay = startUpDelay + 1.2f;
             main.startLifetime = 4.0f;
             main.startColor = new ParticleSystem.MinMaxGradient(this.colorNormal);
             Instantiate(Starfield);
         }
 
+        //Display Lead in particle
+        Invoke("DisplayLeadIn", startUpDelay);
+
         //Display Title
-        InvokeRepeating("DisplayTitle", 0, 10);
+        InvokeRepeating("DisplayTitle", startUpDelay, 10);
 
         //Display Enemy
-        Invoke("DisplayEnemy", 10.0f);
+        Invoke("DisplayEnemy", startUpDelay + 10.0f);
 
     }
 
@@ -76,6 +82,11 @@ public class Manager : MonoBehaviour
             EnemyShipTransform.position = new Vector3(10, -5, 25);
             Instantiate(EnemyShip);
         }
+    }
+
+    void DisplayLeadIn()
+    {
+        new GameObject("LeadInParticle").AddComponent<LeadInParticle>();
     }
 
     void DisplayTitle()

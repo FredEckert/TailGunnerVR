@@ -19,7 +19,7 @@ public class LineData : MonoBehaviour
     public System.Collections.Generic.List<Vector3> ship4Points;
     public System.Collections.Generic.List<Vector3> titlePoints;
 
-    public System.Collections.Generic.List<Vector3> ReticlePoints;
+    public System.Collections.Generic.List<Vector3> reticlePoints;
 
     public virtual void Awake()
     {
@@ -33,6 +33,6 @@ public class LineData : MonoBehaviour
         // Exploded ship parts
 
         // Reticle
-        //this.ReticlePoints = new List<Vector3>(new Vector3[] { };
+        //this.reticlePoints = new List<Vector3>(new Vector3[] { };
     }
 }
