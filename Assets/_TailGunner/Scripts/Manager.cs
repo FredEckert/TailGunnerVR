@@ -46,7 +46,7 @@ public class Manager : MonoBehaviour
         if (Starfield != null)
         {
             var main = Starfield.main;
-            main.startDelay = startUpDelay + 1.2f;
+            main.startDelay = startUpDelay + 0.9f;
             main.startLifetime = 4.0f;
             main.startColor = new ParticleSystem.MinMaxGradient(this.colorNormal);
             Instantiate(Starfield);

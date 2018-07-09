@@ -40,6 +40,10 @@ The following tools are used for development:
 - Blender 2.79b - https://www.blender.org/
 - Gimp 2.10.0 - https://www.gimp.org/
 - Inkscape 0.92.3 - https://inkscape.org/en/
+- Python 3.6.6 - https://www.python.org/
+- OpenCV 3.4.1.15 (opencv-contrib-python-3.4.1.15) - https://opencv.org/
+- NumPy 1.14.5 (numpy-1.14.5) - https://www.numpy.org/
+- matplotlib 2.2.2 (matplotlib-2.2.2) - https://matplotlib.org/
 
 ###### NOTE: The Vectrosity Unity asset is excluded via .gitignore per the licensing agreement. You must purchase a copy of Vectrosity and manually add it to the project.
 
