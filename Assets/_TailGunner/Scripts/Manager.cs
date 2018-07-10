@@ -59,7 +59,7 @@ public class Manager : MonoBehaviour
         InvokeRepeating("DisplayTitle", startUpDelay, 10);
 
         //Display Enemy
-        Invoke("DisplayEnemy", startUpDelay + 10.0f);
+        Invoke("DisplayEnemy", startUpDelay); // + 10.0f);
 
     }
 
@@ -73,14 +73,14 @@ public class Manager : MonoBehaviour
     {
         if (EnemyShip != null)
         {
-            EnemyShipTransform.position = new Vector3(-10, 5, 25);
+            //EnemyShipTransform.position = new Vector3(-10, 5, 25);
             Instantiate(EnemyShip);
-            EnemyShipTransform.position = new Vector3(10, 5, 25);
-            Instantiate(EnemyShip);
-            EnemyShipTransform.position = new Vector3(-10, -5, 25);
-            Instantiate(EnemyShip);
-            EnemyShipTransform.position = new Vector3(10, -5, 25);
-            Instantiate(EnemyShip);
+            //EnemyShipTransform.position = new Vector3(10, 5, 25);
+            //Instantiate(EnemyShip);
+            //EnemyShipTransform.position = new Vector3(-10, -5, 25);
+            //Instantiate(EnemyShip);
+            //EnemyShipTransform.position = new Vector3(10, -5, 25);
+            //Instantiate(EnemyShip);
         }
     }
 
