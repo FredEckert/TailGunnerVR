@@ -27,8 +27,8 @@ public class EnemyShipControl : MonoBehaviour
         sline.Draw3D();
 
 
-        //var line = new VectorLine("EnemyShip", LineData.use.ship1Points, Manager.use.lineWidth);
-        var line = new VectorLine("EnemyShip", LineData.use.ship2Points, Manager.use.lineWidth);
+        var line = new VectorLine("EnemyShip", LineData.use.ship1Points, Manager.use.lineWidth);
+        //var line = new VectorLine("EnemyShip", LineData.use.ship2Points, Manager.use.lineWidth);
         //var line = new VectorLine("EnemyShip", LineData.use.ship3Points, Manager.use.lineWidth);
         //var line = new VectorLine("EnemyShip", LineData.use.ship4Points, Manager.use.lineWidth);
 
@@ -50,15 +50,6 @@ public class EnemyShipControl : MonoBehaviour
             {
                 transform.position = sline.GetPoint3D01(dist);
                 transform.LookAt(sline.GetPoint3D01(dist + 0.001f));
-                //if (transform.position.z > 50)
-                //{
-                //    transform.Rotate(Vector3.left, 90.0f);
-                //}
-                //else
-                //{
-                    transform.Rotate(Vector3.down, 90.0f);
-                //}
-
                 yield return null;
             }
         } while (doLoop);
