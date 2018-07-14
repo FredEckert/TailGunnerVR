@@ -5,17 +5,18 @@ using Vectrosity;
 
 public class EnemyShipControl : MonoBehaviour
 {
-
     public int segments = 250;
     public bool doLoop = true;
     public float speed = .05f;
 
-    // Use this for initialization
     IEnumerator Start()
     {
+        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+
         var splinePoints = new List<Vector3>();
         var i = 1;
         var obj = GameObject.Find("Sphere" + (i++));
+
         while (obj != null)
         {
             splinePoints.Add(obj.transform.position);
@@ -48,8 +49,8 @@ public class EnemyShipControl : MonoBehaviour
         {
             for (var dist = 0.0f; dist < 1.0f; dist += Time.deltaTime * speed)
             {
-                transform.position = sline.GetPoint3D01(dist);
-                transform.LookAt(sline.GetPoint3D01(dist + 0.001f));
+                cube.transform.position = sline.GetPoint3D01(dist);
+                cube.transform.LookAt(sline.GetPoint3D01(dist + 0.001f));
                 yield return null;
             }
         } while (doLoop);
