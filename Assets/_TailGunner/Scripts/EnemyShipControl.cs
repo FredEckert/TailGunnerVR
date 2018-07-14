@@ -5,12 +5,10 @@ using Vectrosity;
 
 public class EnemyShipControl : MonoBehaviour
 {
-
     public int segments = 250;
     public bool doLoop = true;
     public float speed = .05f;
 
-    // Use this for initialization
     IEnumerator Start()
     {
         var splinePoints = new List<Vector3>();
@@ -25,7 +23,6 @@ public class EnemyShipControl : MonoBehaviour
         var sline = new VectorLine("Spline", new List<Vector3>(segments + 1), 2.0f, LineType.Continuous);
         sline.MakeSpline(splinePoints.ToArray(), segments, doLoop);
         sline.Draw3D();
-
 
         var line = new VectorLine("EnemyShip", LineData.use.ship1Points, Manager.use.lineWidth);
         //var line = new VectorLine("EnemyShip", LineData.use.ship2Points, Manager.use.lineWidth);
@@ -43,13 +40,27 @@ public class EnemyShipControl : MonoBehaviour
         // Make VectorManager lines be drawn in the scene instead of as an overlay
         VectorManager.useDraw3D = true;
 
-        // Make the cube "ride" the spline at a constant speed
+        float RotationSpeed = 3000.0f;
+        // Make the EnemyShip "ride" the spline at a constant speed
         do
         {
             for (var dist = 0.0f; dist < 1.0f; dist += Time.deltaTime * speed)
             {
                 transform.position = sline.GetPoint3D01(dist);
                 transform.LookAt(sline.GetPoint3D01(dist + 0.001f));
+
+                //add pitch yaw and roll to ship
+                Quaternion AddRot = Quaternion.identity;
+                float pitch = 0;
+                float yaw = 0;
+                float roll = 0;
+                pitch = Input.GetAxis("Pitch") * (Time.fixedDeltaTime * RotationSpeed);
+                yaw = Input.GetAxis("Yaw") * (Time.fixedDeltaTime * RotationSpeed);
+                roll = Input.GetAxis("Roll") * (Time.fixedDeltaTime * RotationSpeed);
+                Debug.Log("p=" + pitch.ToString() + " y=" +  yaw.ToString() + " r="+ roll.ToString());
+                AddRot.eulerAngles = new Vector3(-pitch, yaw, -roll);
+                transform.Rotate(AddRot.eulerAngles);
+
                 yield return null;
             }
         } while (doLoop);
@@ -57,10 +68,4 @@ public class EnemyShipControl : MonoBehaviour
 
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    //rotate object around its local y axis at 1 degree per second * 10
-    //    transform.Rotate(Vector3.up * Time.deltaTime * 10);
-    //}
 }
