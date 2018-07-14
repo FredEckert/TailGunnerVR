@@ -7,11 +7,35 @@ public class EnemyShipControl : MonoBehaviour
 {
     public int segments = 250;
     public bool doLoop = true;
-    public float speed = .05f;
+    public float speed = 0.01f;
 
     IEnumerator Start()
     {
+        //GameObject cube = GameObject.Find("Cube");
+        //FixedJoint joint = cube.GetComponent<FixedJoint>();
+        //Rigidbody rb = GetComponent<Rigidbody>();
+        //joint.connectedBody = rb;
+
+        //create a cube with a joint to ride the spline
         GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cube.AddComponent<Rigidbody>();
+        cube.AddComponent<HingeJoint>();
+        Rigidbody cuberb = cube.GetComponent<Rigidbody>();
+        HingeJoint joint = cube.GetComponent<HingeJoint>();
+        //cube has to have a rigidbody that is kinematic for physics to work
+        cuberb.isKinematic = true;
+        //configure joint
+        JointLimits lim = joint.limits;
+        lim.min = -100f;
+        lim.max = 100f;
+        lim.bounciness = 0;
+        lim.bounceMinVelocity = 0;
+        joint.axis = Vector3.forward;
+        joint.limits = lim;
+        joint.useLimits = true;
+        //connect EnemyShip to joint
+        Rigidbody rb = GetComponent<Rigidbody>();
+        joint.connectedBody = rb;
 
         var splinePoints = new List<Vector3>();
         var i = 1;
