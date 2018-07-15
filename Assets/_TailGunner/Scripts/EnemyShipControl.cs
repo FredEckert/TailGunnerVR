@@ -6,8 +6,8 @@ using Vectrosity;
 public class EnemyShipControl : MonoBehaviour
 {
     public int segments = 250;
-    public bool doLoop = true;
-    public float speed = 0.01f;
+    public bool doLoop = false;
+    public float speed = 0.05f;
 
     IEnumerator Start()
     {
@@ -26,13 +26,16 @@ public class EnemyShipControl : MonoBehaviour
         cuberb.isKinematic = true;
         //configure joint
         JointLimits lim = joint.limits;
-        lim.min = -100f;
-        lim.max = 100f;
+        lim.min = -1f;
+        lim.max = 1f;
         lim.bounciness = 0;
         lim.bounceMinVelocity = 0;
-        joint.axis = Vector3.forward;
         joint.limits = lim;
         joint.useLimits = true;
+        joint.axis = Vector3.forward;
+        joint.breakForce = 1000000.0f;
+        joint.breakTorque = 1000000.0f;
+        joint.enablePreprocessing = false;
         //connect EnemyShip to joint
         Rigidbody rb = GetComponent<Rigidbody>();
         joint.connectedBody = rb;
@@ -68,6 +71,12 @@ public class EnemyShipControl : MonoBehaviour
         // Make VectorManager lines be drawn in the scene instead of as an overlay
         VectorManager.useDraw3D = true;
 
+
+        Quaternion rotation = Quaternion.identity;
+        float pitch = 0;
+        float yaw = 0;
+        float roll = 0;
+
         // Make the cube "ride" the spline at a constant speed
         do
         {
@@ -75,6 +84,15 @@ public class EnemyShipControl : MonoBehaviour
             {
                 cube.transform.position = sline.GetPoint3D01(dist);
                 cube.transform.LookAt(sline.GetPoint3D01(dist + 0.001f));
+
+                //rotation.eulerAngles = cube.transform.position;
+                //print(rotation.eulerAngles.y);
+
+                pitch = cube.transform.eulerAngles.x;
+                roll = cube.transform.eulerAngles.y; //yaw
+                yaw = cube.transform.eulerAngles.z; //roll
+                Debug.Log("p=" + pitch.ToString("0.00") + " y=" +  yaw.ToString("0.00") + " r="+ roll.ToString("0.00"));
+
                 yield return null;
             }
         } while (doLoop);
@@ -82,10 +100,4 @@ public class EnemyShipControl : MonoBehaviour
 
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    //rotate object around its local y axis at 1 degree per second * 10
-    //    transform.Rotate(Vector3.up * Time.deltaTime * 10);
-    //}
 }
