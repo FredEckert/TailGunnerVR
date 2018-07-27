@@ -11,11 +11,6 @@ public class EnemyShipControl : MonoBehaviour
 
     IEnumerator Start()
     {
-        //GameObject cube = GameObject.Find("Cube");
-        //FixedJoint joint = cube.GetComponent<FixedJoint>();
-        //Rigidbody rb = GetComponent<Rigidbody>();
-        //joint.connectedBody = rb;
-
         //create a cube with a joint to ride the spline
         GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         cube.AddComponent<Rigidbody>();
@@ -64,39 +59,20 @@ public class EnemyShipControl : MonoBehaviour
         line.texture = Manager.use.lineTexture;
         line.color = Manager.use.colorNormal;
         line.capLength = Manager.use.capLength;
-
-        // Make this transform have the vector line object that's defined above
-        // This object is a rigid body, so the vector object will do exactly what this object does
-        VectorManager.ObjectSetup(gameObject, line, Visibility.Dynamic, Brightness.None);
-        // Make VectorManager lines be drawn in the scene instead of as an overlay
-        VectorManager.useDraw3D = true;
+        line.drawTransform = cube.transform;
 
 
-        Quaternion rotation = Quaternion.identity;
-        float pitch = 0;
-        float yaw = 0;
-        float roll = 0;
-
-        // Make the cube "ride" the spline at a constant speed
+        // Make the EnemyShip "ride" the spline at a constant speed
         do
         {
             for (var dist = 0.0f; dist < 1.0f; dist += Time.deltaTime * speed)
             {
                 cube.transform.position = sline.GetPoint3D01(dist);
                 cube.transform.LookAt(sline.GetPoint3D01(dist + 0.001f));
-
-                //rotation.eulerAngles = cube.transform.position;
-                //print(rotation.eulerAngles.y);
-
-                pitch = cube.transform.eulerAngles.x;
-                roll = cube.transform.eulerAngles.y; //yaw
-                yaw = cube.transform.eulerAngles.z; //roll
-                Debug.Log("p=" + pitch.ToString("0.00") + " y=" +  yaw.ToString("0.00") + " r="+ roll.ToString("0.00"));
-
+                line.Draw3D();
                 yield return null;
             }
         } while (doLoop);
-
 
     }
 

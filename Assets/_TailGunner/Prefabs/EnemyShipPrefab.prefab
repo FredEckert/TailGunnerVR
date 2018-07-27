@@ -124,5 +124,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   segments: 250
-  doLoop: 0
-  speed: 0.05
+  doLoop: 1
+  speed: 0.2
