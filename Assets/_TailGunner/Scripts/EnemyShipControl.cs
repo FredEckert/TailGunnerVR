@@ -30,7 +30,7 @@ public class EnemyShipControl : MonoBehaviour
         joint.axis = Vector3.forward;
         joint.breakForce = 1000000.0f;
         joint.breakTorque = 1000000.0f;
-        joint.enablePreprocessing = false;
+        joint.enablePreprocessing = true;
         //connect EnemyShip to joint
         Rigidbody rb = GetComponent<Rigidbody>();
         joint.connectedBody = rb;
@@ -61,6 +61,11 @@ public class EnemyShipControl : MonoBehaviour
         line.capLength = Manager.use.capLength;
         line.drawTransform = cube.transform;
 
+        // Make this transform have the vector line object that's defined above
+        // This object is a rigid body, so the vector object will do exactly what this object does
+        VectorManager.ObjectSetup(gameObject, line, Visibility.Dynamic, Brightness.None);
+        // Make VectorManager lines be drawn in the scene instead of as an overlay
+        VectorManager.useDraw3D = true;
 
         // Make the EnemyShip "ride" the spline at a constant speed
         do
@@ -69,7 +74,7 @@ public class EnemyShipControl : MonoBehaviour
             {
                 cube.transform.position = sline.GetPoint3D01(dist);
                 cube.transform.LookAt(sline.GetPoint3D01(dist + 0.001f));
-                line.Draw3D();
+                //line.Draw3D();
                 yield return null;
             }
         } while (doLoop);
