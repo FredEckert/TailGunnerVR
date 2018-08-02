@@ -32,12 +32,11 @@ public class TitleBanner : MonoBehaviour
         line.color = Manager.use.colorNormal;
         line.capLength = Manager.use.capLength;
 
+        // Make VectorManager lines be drawn in the scene instead of as an overlay
+        VectorManager.useDraw3D = true;
         // Make this transform have the vector line object that's defined above
         // This object is a rigidbody, so the vector object will do exactly what this object does
         VectorManager.ObjectSetup(gameObject, line, Visibility.Dynamic, Brightness.None);
-
-        // Make VectorManager lines be drawn in the scene instead of as an overlay
-        VectorManager.useDraw3D = true;
 
         Destroy(gameObject, 8.4f);
     }

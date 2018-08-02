@@ -61,11 +61,11 @@ public class EnemyShipControl : MonoBehaviour
         line.capLength = Manager.use.capLength;
         line.drawTransform = cube.transform;
 
+        // Make VectorManager lines be drawn in the scene instead of as an overlay
+        VectorManager.useDraw3D = true;
         // Make this transform have the vector line object that's defined above
         // This object is a rigid body, so the vector object will do exactly what this object does
         VectorManager.ObjectSetup(gameObject, line, Visibility.Dynamic, Brightness.None);
-        // Make VectorManager lines be drawn in the scene instead of as an overlay
-        VectorManager.useDraw3D = true;
 
         // Make the EnemyShip "ride" the spline at a constant speed
         do
