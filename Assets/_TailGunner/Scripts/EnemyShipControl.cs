@@ -81,4 +81,19 @@ public class EnemyShipControl : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        //Debug.Log("Collision");
+        // force is how forcefully we will push the EnemyShip away from the shield.
+        float force = 7000000;
+
+        // Calculate Angle Between the collision point and the EnemyShip
+        Vector3 dir = collision.contacts[0].point - transform.position;
+        // We then get the opposite (-Vector3) and normalize it
+        dir = -dir.normalized;
+        // And finally we add force in the direction of dir and multiply it by force.
+        // This will push back the EnemyShip
+        GetComponent<Rigidbody>().AddForce(dir * force);
+    }
+
 }
