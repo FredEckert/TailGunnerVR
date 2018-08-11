@@ -125,4 +125,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   segments: 250
   doLoop: 1
-  speed: 0.4
+  speed: 0.1
+  showSpline: 1
+  showPoints: 1

@@ -8,6 +8,8 @@ public class EnemyShipControl : MonoBehaviour
     public int segments = 250;
     public bool doLoop = false;
     public float speed = 0.05f;
+    public bool showSpline = false;
+    public bool showPoints = false;
 
     IEnumerator Start()
     {
@@ -35,6 +37,8 @@ public class EnemyShipControl : MonoBehaviour
         Rigidbody rb = GetComponent<Rigidbody>();
         joint.connectedBody = rb;
 
+        cube.GetComponent<MeshRenderer>().enabled = showPoints;
+
         var splinePoints = new List<Vector3>();
         var i = 1;
         var obj = GameObject.Find("Sphere" + (i++));
@@ -42,13 +46,14 @@ public class EnemyShipControl : MonoBehaviour
         while (obj != null)
         {
             splinePoints.Add(obj.transform.position);
+            obj.GetComponent<MeshRenderer>().enabled = showPoints;
             obj = GameObject.Find("Sphere" + (i++));
         }
 
         var sline = new VectorLine("Spline", new List<Vector3>(segments + 1), 2.0f, LineType.Continuous);
         sline.MakeSpline(splinePoints.ToArray(), segments, doLoop);
-        sline.Draw3D();
-
+        if (showSpline)
+            sline.Draw3D();
 
         var line = new VectorLine("EnemyShip", LineData.use.ship1Points, Manager.use.lineWidth);
         //var line = new VectorLine("EnemyShip", LineData.use.ship2Points, Manager.use.lineWidth);
