@@ -61,8 +61,9 @@ public class TitleBanner : MonoBehaviour
         else
         {
             //lerp color
-            var myLerp = Mathf.Lerp(0, 1, (Time.time - starttime) / duration);
-            var c = Color.Lerp(color1, color2, myLerp);
+            //var myLerp = Mathf.Lerp(0, 1, (Time.time - starttime) / duration);
+            //var c = Color.Lerp(color1, color2, myLerp);
+            var c = (MathS.ColorLerp(color1, color2, (Time.time - starttime) / duration));
             line.color = c;
             //invert colors
             if (c == color2)

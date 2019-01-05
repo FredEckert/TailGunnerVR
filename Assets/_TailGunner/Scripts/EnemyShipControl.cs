@@ -11,6 +11,8 @@ public class EnemyShipControl : MonoBehaviour
     public bool showSpline = false;
     public bool showPoints = false;
 
+    private bool collided = false; //fwe190102
+
     IEnumerator Start()
     {
         //create a cube with a joint to ride the spline
@@ -55,16 +57,17 @@ public class EnemyShipControl : MonoBehaviour
         if (showSpline)
             sline.Draw3D();
 
-        var line = new VectorLine("EnemyShip", LineData.use.ship1Points, Manager.use.lineWidth);
-        //var line = new VectorLine("EnemyShip", LineData.use.ship2Points, Manager.use.lineWidth);
-        //var line = new VectorLine("EnemyShip", LineData.use.ship3Points, Manager.use.lineWidth);
-        //var line = new VectorLine("EnemyShip", LineData.use.ship4Points, Manager.use.lineWidth);
-
-        line.material = Manager.use.lineMaterial;
-        line.texture = Manager.use.lineTexture;
-        line.color = Manager.use.colorNormal;
-        line.capLength = Manager.use.capLength;
-        line.drawTransform = cube.transform;
+        var line = new VectorLine("EnemyShip", LineData.use.ship1Points, Manager.use.lineWidth)
+        //var line = new VectorLine("EnemyShip", LineData.use.ship2Points, Manager.use.lineWidth)
+        //var line = new VectorLine("EnemyShip", LineData.use.ship3Points, Manager.use.lineWidth)
+        //var line = new VectorLine("EnemyShip", LineData.use.ship4Points, Manager.use.lineWidth)
+        {
+            material = Manager.use.lineMaterial,
+            texture = Manager.use.lineTexture,
+            color = Manager.use.colorNormal,
+            capLength = Manager.use.capLength,
+            drawTransform = cube.transform
+        };
 
         // Make VectorManager lines be drawn in the scene instead of as an overlay
         VectorManager.useDraw3D = true;
@@ -86,19 +89,72 @@ public class EnemyShipControl : MonoBehaviour
 
     }
 
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    // Make 100% sure that only one collision registers
+    //    if (this.collided)
+    //    {
+    //        return;
+    //    }
+    //    this.collided = true;
+    //    //Debug.Log("Collision");
+    //    // force is how forcefully we will push the EnemyShip away from the shield.
+    //    float force = 7000000;
+    //    // Calculate Angle Between the collision point and the EnemyShip
+    //    Vector3 dir = collision.contacts[0].point - transform.position;
+    //    // We then get the opposite (-Vector3) and normalize it
+    //    dir = -dir.normalized;
+    //    // And finally we add force in the direction of dir and multiply it by force.
+    //    // This will push back the EnemyShip
+    //    GetComponent<Rigidbody>().AddForce(dir * force);
+    //}
+
     private void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log("Collision");
-        // force is how forcefully we will push the EnemyShip away from the shield.
-        float force = 7000000;
+        // Make 100% sure that only one collision registers
+        if (this.collided)
+        {
+            return;
+        }
+        this.collided = true;
+        //erase EnemyShip
+        UnityEngine.Object.Destroy(gameObject);
+        //show EnemyShip exploding parts
+        MakeShipExplosion(transform.position,transform.rotation);
+    }
 
-        // Calculate Angle Between the collision point and the EnemyShip
-        Vector3 dir = collision.contacts[0].point - transform.position;
-        // We then get the opposite (-Vector3) and normalize it
-        dir = -dir.normalized;
-        // And finally we add force in the direction of dir and multiply it by force.
-        // This will push back the EnemyShip
-        GetComponent<Rigidbody>().AddForce(dir * force);
+
+    public virtual void MakeShipExplosion(Vector3 pos, Quaternion rot)
+    {
+        //fwe181230 this.PlayAudioClip(this.explosionSound, pos);
+        // Make a temporary object that the exploded ship parts will be attached to temporarily, so we can set their positions easily with localPosition
+        Transform temp = new GameObject().transform;
+        temp.position = pos;
+        // Make every explosion a little different by changing the position of the explosion force
+        Vector3 randomize = new Vector3(Random.Range(-1f, 1f), Random.Range(-0.5f, 0.5f), Random.Range(-1f, 1f));
+        // Instantiate all ship parts at their corresponding locations and add explosion force to each
+        int i = 0;
+        while (i < LineData.use.partLocations.Length)
+        {
+
+            Transform part = UnityEngine.Object.Instantiate(Manager.use.shipPart);
+            part.parent = temp;
+            part.localPosition = LineData.use.partLocations[i];
+
+            ((ShipPart)part.GetComponent(typeof(ShipPart))).line = new VectorLine("ShipPart", LineData.use.partPoints[i], Manager.use.lineWidth)
+            {
+                material = Manager.use.lineMaterial,
+                color = Manager.use.colorNormal
+            };
+            float modify = i == 0 ? 1.4f : 1f; // Make radar (which is the first part) go farther because it's supposedly lighter
+            //((Rigidbody)part.GetComponent(typeof(Rigidbody))).AddExplosionForce((Manager.use.explodeForce * modify) + Random.Range(-4f, 4f), pos + randomize, 10f, 5f, ForceMode.VelocityChange);
+            ((Rigidbody)part.GetComponent(typeof(Rigidbody))).AddExplosionForce((Manager.use.explodeForce * modify) + Random.Range(-4f, 4f), pos + randomize, 10f, 0f, ForceMode.VelocityChange);
+            i++;
+        }
+        // Rotate all parts
+        temp.rotation = rot;
+        temp.DetachChildren();
+        UnityEngine.Object.Destroy(temp.gameObject);
     }
 
 }

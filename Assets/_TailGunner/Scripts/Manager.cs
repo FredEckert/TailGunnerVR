@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Vectrosity;
 
 public class Manager : MonoBehaviour
 {
@@ -12,10 +13,16 @@ public class Manager : MonoBehaviour
     [UnityEngine.HideInInspector]
     public float capLength;
 
+    public Transform shipPart;
+    public float explodeForce;
+
     public ParticleSystem Starfield;
 
     public GameObject EnemyShip;
     public Transform EnemyShipTransform;
+
+    [UnityEngine.HideInInspector]
+    public System.Collections.Generic.List<Transform> objects;
 
     public static Manager use;
 
@@ -92,6 +99,30 @@ public class Manager : MonoBehaviour
     void DisplayTitle()
     {
         new GameObject("TitleBanner").AddComponent<TitleBanner>();
+    }
+
+    public virtual int ArrayAdd(Transform thisTransform, System.Collections.Generic.List<Transform> list)
+    {
+        int i = 0;
+        // If there are any unused slots in the array, use the first one found for this transform
+        i = 0;
+        while (i < list.Count)
+        {
+            if (list[i] == null)
+            {
+                list[i] = thisTransform;
+                return i;
+            }
+            i++;
+        }
+        // Otherwise, if the array is full, make it bigger
+        list.Add(thisTransform);
+        return i;
+    }
+
+    public virtual void ArrayRemove(int objectNumber, System.Collections.Generic.List<Transform> list)
+    {
+        list[objectNumber] = null;
     }
 
 }
