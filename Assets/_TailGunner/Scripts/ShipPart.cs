@@ -13,7 +13,7 @@ public partial class ShipPart : MonoBehaviour
 
     private int objectNumber;
 
-    private bool collided;
+    //private bool collided;
 
     public virtual void Start()
     {

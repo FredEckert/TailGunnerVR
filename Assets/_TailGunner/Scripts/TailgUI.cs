@@ -17,16 +17,12 @@ public class TailgUI : MonoBehaviour
     private string scoreString2;
     private string[] currentStrings;
 
-    public static VectorLine Reticle;
-
     public static TailgUI use;
 
     public virtual void Awake()
     {
         TailgUI.use = this;
     }
-
-
 
     public void StartUp()
     {
@@ -44,7 +40,9 @@ public class TailgUI : MonoBehaviour
 
         //this.AddToScore(1);
         //this.AddToScore(2439);
+
     }
+
 
     public virtual VectorLine MakeLine(string name, System.Collections.Generic.List<Vector3> list)
     {

@@ -13,7 +13,7 @@ TailGunnerVR - A clone of the 1979 Tail Gunner arcade game targeting the PC / Oc
 ### EXPLANATION OF CODE
 
 <!-- TODO: An explanation of the code can be found on the following blog posts: -->
-This project is in its early planning stages.  
+This project is in its early developmental stages.
 Please see the Wiki for status. - https://github.com/FredEckert/TailGunnerVR/wiki
 
 ### DEPENDENCIES
@@ -21,8 +21,6 @@ Please see the Wiki for status. - https://github.com/FredEckert/TailGunnerVR/wik
 ##### Hardware:
 - PC
 - Oculus Rift CV1 HMD
-- Logitech Rumble Gamepad F510 (XInput mode)
-- Chair
 
 ##### Operating environment:
 - Microsoft Windows 10 Pro (x64) v1803
@@ -32,8 +30,8 @@ Please see the Wiki for status. - https://github.com/FredEckert/TailGunnerVR/wik
 ##### Software:
 The following tools are used for development:
 - Oculus v1.33.0 - https://www.oculus.com/
-- Unity 2017.4.17f1 Personal - https://unity3d.com/
-- Microsoft Visual Studio Community 2017 v15.9.4 - https://www.microsoft.com/
+- Unity 2017.4.18f1 Personal - https://unity3d.com/
+- Microsoft Visual Studio Community 2017 v15.9.5 - https://www.microsoft.com/
 - Visual Studio Tools for Unity 3.9.0.3 - https://unity3d.com/
 - Vectrosity 5.6 - https://starscenesoftware.com
 - Audacity 2.2.2 - https://www.audacityteam.org/

@@ -49,6 +49,11 @@ public class LineData : MonoBehaviour
         }
 
         // Reticle
-        //this.reticlePoints = new List<Vector3>(new Vector3[] { };
+        this.reticlePoints = new List<Vector3>(new Vector3[] { new Vector3(-30f, 0f), new Vector3(30f, 0f), new Vector3(0f, -30f), new Vector3(0f, 30f),
+                                                               new Vector3(-5f, 10f), new Vector3(5f, 10f), new Vector3(10f, 5f), new Vector3(10f, -5f),
+                                                               new Vector3(5f, -10f), new Vector3(-5f, -10f), new Vector3(-10f, 5f), new Vector3(-10f, -5f),
+                                                               new Vector3(-10f, 20f), new Vector3(10f, 20f), new Vector3(20f, 10f), new Vector3(20f, -10f),
+                                                               new Vector3(10f, -20f), new Vector3(-10f, -20f), new Vector3(-20f, 10f), new Vector3(-20f, -10f) } );
+
     }
 }
