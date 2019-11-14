@@ -23,15 +23,15 @@ Please see the Wiki for status. - https://github.com/FredEckert/TailGunnerVR/wik
 - Oculus Rift CV1 HMD
 
 ##### Operating environment:
-- Microsoft Windows 10 Pro (x64) v1803
-- Microsoft .NET Framework Version 4.7.03056
-- NVidia Quadro P4000 Driver Version 397.31
+- Microsoft Windows 10 Pro (x64) v1903
+- Microsoft .NET Framework Version 4.8.03752
+- NVidia Quadro P4000 Driver Version 431.02
 
 ##### Software:
 The following tools are used for development:
-- Oculus v1.33.0 - https://www.oculus.com/
-- Unity 2017.4.18f1 Personal - https://unity3d.com/
-- Microsoft Visual Studio Community 2017 v15.9.5 - https://www.microsoft.com/
+- Oculus App Version 12.0.0.241.268 (12.0.0.241.268) - https://www.oculus.com/
+- Unity 2017.4.35f1 Personal - https://unity3d.com/
+- Microsoft Visual Studio Community 2017 v15.9.18 - https://www.microsoft.com/
 - Visual Studio Tools for Unity 3.9.0.3 - https://unity3d.com/
 - Vectrosity 5.6 - https://starscenesoftware.com
 - Audacity 2.2.2 - https://www.audacityteam.org/
