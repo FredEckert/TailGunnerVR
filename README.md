@@ -23,7 +23,7 @@ Please see the Wiki for status. - https://github.com/FredEckert/TailGunnerVR/wik
 - Oculus Rift CV1 HMD
 
 ##### Operating environment:
-- Microsoft Windows 10 Pro (x64) v1903
+- Microsoft Windows 10 Pro (x64) v1909
 - Microsoft .NET Framework Version 4.8.03752
 - NVidia Quadro P4000 Driver Version 431.02
 
