@@ -303,7 +303,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 342820801}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 17}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -366,8 +366,10 @@ MonoBehaviour:
   explodeForce: 15
   Starfield: {fileID: 198662677241458530, guid: ffa24e4f9c0f0714d8d343d181619046,
     type: 2}
-  EnemyShip: {fileID: 1558834117921768, guid: 82ee536a239ed294ba59595f894115f8, type: 2}
-  EnemyShipTransform: {fileID: 4158499803406772, guid: 82ee536a239ed294ba59595f894115f8,
+  EnemyShipPrefab: {fileID: 1558834117921768, guid: 82ee536a239ed294ba59595f894115f8,
+    type: 2}
+  EnemyShip1: {fileID: 0}
+  EnemyShip1Transform: {fileID: 4158499803406772, guid: 82ee536a239ed294ba59595f894115f8,
     type: 2}
   objects: []
 --- !u!4 &353718867

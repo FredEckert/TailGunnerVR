@@ -17,8 +17,10 @@ public class Manager : MonoBehaviour
 
     public ParticleSystem Starfield;
 
-    public GameObject EnemyShip;
-    public Transform EnemyShipTransform;
+    public GameObject EnemyShipPrefab;
+
+    [UnityEngine.HideInInspector]
+    public GameObject eShip1;
 
     [UnityEngine.HideInInspector]
     public System.Collections.Generic.List<Transform> objects;
@@ -65,7 +67,7 @@ public class Manager : MonoBehaviour
         Invoke("DisplayLeadIn", startUpDelay);
 
         //Display Title
-        InvokeRepeating("DisplayTitle", startUpDelay, 10);
+        //InvokeRepeating("DisplayTitle", startUpDelay, 10);
 
         //Display Enemy
         Invoke("DisplayEnemy", startUpDelay); // + 10.0f);
@@ -75,15 +77,31 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //get the input
+        var input = Input.inputString;
+        //ignore null input to avoid unnecessary computation
+        if (!string.IsNullOrEmpty(input))
+        {
+            //logic related to the char pressed
+            //Debug.Log("Pressed char: " + Input.inputString);
+            switch(input)
+            {
+                case "r":
+                    //Destroy(es1.cube);
+                    Destroy(eShip1);
+                    eShip1 = Instantiate(EnemyShipPrefab);
+                    break;
+            }
 
+        }
     }
 
     void DisplayEnemy()
     {
-        if (EnemyShip != null)
+        if (EnemyShipPrefab != null)
         {
             //EnemyShipTransform.position = new Vector3(-10, 5, 25);
-            Instantiate(EnemyShip);
+            eShip1 = Instantiate(EnemyShipPrefab);
             //EnemyShipTransform.position = new Vector3(10, 5, 25);
             //Instantiate(EnemyShip);
             //EnemyShipTransform.position = new Vector3(-10, -5, 25);

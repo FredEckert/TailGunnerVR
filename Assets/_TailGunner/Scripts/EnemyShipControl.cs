@@ -87,6 +87,9 @@ public class EnemyShipControl : MonoBehaviour
             }
         } while (doLoop);
 
+        Destroy(cube);
+        Destroy(this);
+
     }
 
     //private void OnCollisionEnter(Collision collision)
