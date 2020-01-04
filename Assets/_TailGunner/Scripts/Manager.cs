@@ -87,7 +87,6 @@ public class Manager : MonoBehaviour
             switch(input)
             {
                 case "r":
-                    //Destroy(es1.cube);
                     Destroy(eShip1);
                     eShip1 = Instantiate(EnemyShipPrefab);
                     break;

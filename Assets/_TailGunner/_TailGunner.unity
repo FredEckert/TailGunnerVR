@@ -366,11 +366,9 @@ MonoBehaviour:
   explodeForce: 15
   Starfield: {fileID: 198662677241458530, guid: ffa24e4f9c0f0714d8d343d181619046,
     type: 2}
-  EnemyShipPrefab: {fileID: 1558834117921768, guid: 82ee536a239ed294ba59595f894115f8,
+  EnemyShipPrefab: {fileID: 1762730281077590, guid: f4595052b289cec45a2bd9bee38aa2e5,
     type: 2}
-  EnemyShip1: {fileID: 0}
-  EnemyShip1Transform: {fileID: 4158499803406772, guid: 82ee536a239ed294ba59595f894115f8,
-    type: 2}
+  eShip1: {fileID: 0}
   objects: []
 --- !u!4 &353718867
 Transform:

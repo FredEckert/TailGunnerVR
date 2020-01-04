@@ -13,33 +13,36 @@ public class EnemyShipControl : MonoBehaviour
 
     private bool collided = false; //fwe190102
 
+    public GameObject splineRidingCube;
+    private VectorLine sline;
+
     IEnumerator Start()
     {
-        //create a cube with a joint to ride the spline
-        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        cube.AddComponent<Rigidbody>();
-        cube.AddComponent<HingeJoint>();
-        Rigidbody cuberb = cube.GetComponent<Rigidbody>();
-        HingeJoint joint = cube.GetComponent<HingeJoint>();
-        //cube has to have a rigidbody that is kinematic for physics to work
-        cuberb.isKinematic = true;
-        //configure joint
-        JointLimits lim = joint.limits;
-        lim.min = -1f;
-        lim.max = 1f;
-        lim.bounciness = 0;
-        lim.bounceMinVelocity = 0;
-        joint.limits = lim;
-        joint.useLimits = true;
-        joint.axis = Vector3.forward;
-        joint.breakForce = 1000000.0f;
-        joint.breakTorque = 1000000.0f;
-        joint.enablePreprocessing = true;
-        //connect EnemyShip to joint
-        Rigidbody rb = GetComponent<Rigidbody>();
-        joint.connectedBody = rb;
+        ////create a cube with a joint to ride the spline
+        //GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        //cube.AddComponent<Rigidbody>();
+        //cube.AddComponent<HingeJoint>();
+        //Rigidbody cuberb = cube.GetComponent<Rigidbody>();
+        //HingeJoint joint = cube.GetComponent<HingeJoint>();
+        ////cube has to have a rigidbody that is kinematic for physics to work
+        //cuberb.isKinematic = true;
+        ////configure joint
+        //JointLimits lim = joint.limits;
+        //lim.min = -1f;
+        //lim.max = 1f;
+        //lim.bounciness = 0;
+        //lim.bounceMinVelocity = 0;
+        //joint.limits = lim;
+        //joint.useLimits = true;
+        //joint.axis = Vector3.forward;
+        //joint.breakForce = 1000000.0f;
+        //joint.breakTorque = 1000000.0f;
+        //joint.enablePreprocessing = true;
+        ////connect EnemyShip to joint
+        //Rigidbody rb = GetComponent<Rigidbody>();
+        //joint.connectedBody = rb;
 
-        cube.GetComponent<MeshRenderer>().enabled = showPoints;
+        splineRidingCube.GetComponent<MeshRenderer>().enabled = showPoints;
 
         var splinePoints = new List<Vector3>();
         var i = 1;
@@ -52,7 +55,7 @@ public class EnemyShipControl : MonoBehaviour
             obj = GameObject.Find("Sphere" + (i++));
         }
 
-        var sline = new VectorLine("Spline", new List<Vector3>(segments + 1), 2.0f, LineType.Continuous);
+        sline = new VectorLine("Spline", new List<Vector3>(segments + 1), 2.0f, LineType.Continuous);
         sline.MakeSpline(splinePoints.ToArray(), segments, doLoop);
         if (showSpline)
             sline.Draw3D();
@@ -66,7 +69,7 @@ public class EnemyShipControl : MonoBehaviour
             texture = Manager.use.lineTexture,
             color = Manager.use.colorNormal,
             capLength = Manager.use.capLength,
-            drawTransform = cube.transform
+            drawTransform = splineRidingCube.transform
         };
 
         // Make VectorManager lines be drawn in the scene instead of as an overlay
@@ -80,17 +83,20 @@ public class EnemyShipControl : MonoBehaviour
         {
             for (var dist = 0.0f; dist < 1.0f; dist += Time.deltaTime * speed)
             {
-                cube.transform.position = sline.GetPoint3D01(dist);
-                cube.transform.LookAt(sline.GetPoint3D01(dist + 0.001f));
+                splineRidingCube.transform.position = sline.GetPoint3D01(dist);
+                splineRidingCube.transform.LookAt(sline.GetPoint3D01(dist + 0.001f));
                 //line.Draw3D();
                 yield return null;
             }
         } while (doLoop);
 
-        Destroy(cube);
-        Destroy(this);
-
     }
+
+    private void OnDestroy()
+    {
+        VectorLine.Destroy(ref sline);
+    }
+
 
     //private void OnCollisionEnter(Collision collision)
     //{
