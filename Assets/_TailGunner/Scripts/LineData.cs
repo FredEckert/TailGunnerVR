@@ -26,6 +26,8 @@ public class LineData : MonoBehaviour
 
     public System.Collections.Generic.List<Vector3> reticlePoints;
 
+    public System.Collections.Generic.List<Vector3> w1t1sPoints;
+
 
     public Vector3[] partLocations;
 
@@ -54,6 +56,15 @@ public class LineData : MonoBehaviour
                                                                new Vector3(5f, -10f), new Vector3(-5f, -10f), new Vector3(-10f, 5f), new Vector3(-10f, -5f),
                                                                new Vector3(-10f, 20f), new Vector3(10f, 20f), new Vector3(20f, 10f), new Vector3(20f, -10f),
                                                                new Vector3(10f, -20f), new Vector3(-10f, -20f), new Vector3(-20f, 10f), new Vector3(-20f, -10f) } );
+
+
+        // wave 1 track 1 spline points
+        this.w1t1sPoints = new List<Vector3>(new Vector3[] { new Vector3(50f, 50f, 100f),
+                                                             new Vector3(50f, 0f, 100f),
+                                                             new Vector3(-3f, 7f, 50f),
+                                                             new Vector3(-10f, 5f, 45f),
+                                                             new Vector3(-2f, 2f, 40f),
+                                                             new Vector3(0f, 0f, -2f) } );
 
     }
 }

@@ -15,6 +15,8 @@ public class EnemyShipControl : MonoBehaviour
 
     public GameObject splineRidingCube;
     private VectorLine sline;
+    private List<Vector3> splinePoints;
+    private List<GameObject> splinePointSpheres;
 
     IEnumerator Start()
     {
@@ -44,21 +46,38 @@ public class EnemyShipControl : MonoBehaviour
 
         splineRidingCube.GetComponent<MeshRenderer>().enabled = showPoints;
 
-        var splinePoints = new List<Vector3>();
-        var i = 1;
-        var obj = GameObject.Find("Sphere" + (i++));
+        //var splinePoints = new List<Vector3>();
+        //var i = 1;
+        //var obj = GameObject.Find("Sphere" + (i++));
+        //while (obj != null)
+        //{
+        //    splinePoints.Add(obj.transform.position);
+        //    obj.GetComponent<MeshRenderer>().enabled = showPoints;
+        //    obj = GameObject.Find("Sphere" + (i++));
+        //}
 
-        while (obj != null)
+        splinePoints = LineData.use.w1t1sPoints;
+        if (showPoints)
         {
-            splinePoints.Add(obj.transform.position);
-            obj.GetComponent<MeshRenderer>().enabled = showPoints;
-            obj = GameObject.Find("Sphere" + (i++));
+            splinePointSpheres = new List<GameObject>();
+            foreach (Vector3 sPoint in splinePoints)
+            {
+                GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                sphere.transform.position = sPoint;
+                sphere.GetComponent<Collider>().enabled = false;
+                sphere.GetComponent<MeshRenderer>().enabled = true;
+                splinePointSpheres.Add(sphere);
+            }
         }
 
         sline = new VectorLine("Spline", new List<Vector3>(segments + 1), 2.0f, LineType.Continuous);
         sline.MakeSpline(splinePoints.ToArray(), segments, doLoop);
         if (showSpline)
             sline.Draw3D();
+
+        //put enemy ship at start point before showing it
+        gameObject.transform.position = sline.GetPoint3D01(0);
+        gameObject.transform.LookAt(sline.GetPoint3D01(0.001f));
 
         var line = new VectorLine("EnemyShip", LineData.use.ship1Points, Manager.use.lineWidth)
         //var line = new VectorLine("EnemyShip", LineData.use.ship2Points, Manager.use.lineWidth)
@@ -94,9 +113,17 @@ public class EnemyShipControl : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (showPoints)
+        {
+            foreach (GameObject obj in splinePointSpheres)
+            {
+                Destroy(obj);
+            }
+            splinePointSpheres.RemoveAll((o) => o == null);
+        }
+
         VectorLine.Destroy(ref sline);
     }
-
 
     //private void OnCollisionEnter(Collision collision)
     //{
@@ -131,7 +158,6 @@ public class EnemyShipControl : MonoBehaviour
         //show EnemyShip exploding parts
         MakeShipExplosion(transform.position,transform.rotation);
     }
-
 
     public virtual void MakeShipExplosion(Vector3 pos, Quaternion rot)
     {
