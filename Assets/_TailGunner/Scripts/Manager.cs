@@ -18,9 +18,10 @@ public class Manager : MonoBehaviour
     public ParticleSystem Starfield;
 
     public GameObject EnemyShipPrefab;
-
     [UnityEngine.HideInInspector]
     public GameObject eShip1;
+    [UnityEngine.HideInInspector]
+    public int attackWave = 1;
 
     [UnityEngine.HideInInspector]
     public System.Collections.Generic.List<Transform> objects;
@@ -88,8 +89,20 @@ public class Manager : MonoBehaviour
             {
                 case "r":
                     Destroy(eShip1);
+                    attackWave = 1;
                     eShip1 = Instantiate(EnemyShipPrefab);
+                    eShip1.GetComponent<EnemyShipControl>().showPoints = false;
+                    eShip1.GetComponent<EnemyShipControl>().showSpline = false;
                     break;
+
+                case "s":
+                    Destroy(eShip1);
+                    attackWave = 2;
+                    eShip1 = Instantiate(EnemyShipPrefab);
+                    eShip1.GetComponent<EnemyShipControl>().showPoints = true;
+                    eShip1.GetComponent<EnemyShipControl>().showSpline = true;
+                    break;
+
             }
 
         }

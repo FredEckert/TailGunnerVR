@@ -20,43 +20,16 @@ public class EnemyShipControl : MonoBehaviour
 
     IEnumerator Start()
     {
-        ////create a cube with a joint to ride the spline
-        //GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        //cube.AddComponent<Rigidbody>();
-        //cube.AddComponent<HingeJoint>();
-        //Rigidbody cuberb = cube.GetComponent<Rigidbody>();
-        //HingeJoint joint = cube.GetComponent<HingeJoint>();
-        ////cube has to have a rigidbody that is kinematic for physics to work
-        //cuberb.isKinematic = true;
-        ////configure joint
-        //JointLimits lim = joint.limits;
-        //lim.min = -1f;
-        //lim.max = 1f;
-        //lim.bounciness = 0;
-        //lim.bounceMinVelocity = 0;
-        //joint.limits = lim;
-        //joint.useLimits = true;
-        //joint.axis = Vector3.forward;
-        //joint.breakForce = 1000000.0f;
-        //joint.breakTorque = 1000000.0f;
-        //joint.enablePreprocessing = true;
-        ////connect EnemyShip to joint
-        //Rigidbody rb = GetComponent<Rigidbody>();
-        //joint.connectedBody = rb;
+        switch (Manager.use.attackWave)
+        {
+            case 1:
+                splinePoints = LineData.use.w1t1sPoints;
+                break;
+            case 2:
+                splinePoints = LineData.use.w1t2sPoints;
+                break;
+        }
 
-        splineRidingCube.GetComponent<MeshRenderer>().enabled = showPoints;
-
-        //var splinePoints = new List<Vector3>();
-        //var i = 1;
-        //var obj = GameObject.Find("Sphere" + (i++));
-        //while (obj != null)
-        //{
-        //    splinePoints.Add(obj.transform.position);
-        //    obj.GetComponent<MeshRenderer>().enabled = showPoints;
-        //    obj = GameObject.Find("Sphere" + (i++));
-        //}
-
-        splinePoints = LineData.use.w1t1sPoints;
         if (showPoints)
         {
             splinePointSpheres = new List<GameObject>();
@@ -68,6 +41,7 @@ public class EnemyShipControl : MonoBehaviour
                 sphere.GetComponent<MeshRenderer>().enabled = true;
                 splinePointSpheres.Add(sphere);
             }
+            splineRidingCube.GetComponent<MeshRenderer>().enabled = true;
         }
 
         sline = new VectorLine("Spline", new List<Vector3>(segments + 1), 2.0f, LineType.Continuous);
