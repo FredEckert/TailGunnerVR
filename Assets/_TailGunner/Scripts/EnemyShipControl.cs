@@ -39,6 +39,8 @@ public class EnemyShipControl : MonoBehaviour
                 sphere.transform.position = sPoint;
                 sphere.GetComponent<Collider>().enabled = false;
                 sphere.GetComponent<MeshRenderer>().enabled = true;
+                sphere.GetComponent<MeshRenderer>().material.EnableKeyword("_EMISSION");
+                sphere.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", Color.magenta);
                 splinePointSpheres.Add(sphere);
             }
             splineRidingCube.GetComponent<MeshRenderer>().enabled = true;

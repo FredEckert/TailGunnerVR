@@ -269,6 +269,7 @@ MonoBehaviour:
   EnemyShipPrefab: {fileID: 1762730281077590, guid: f4595052b289cec45a2bd9bee38aa2e5,
     type: 2}
   eShip1: {fileID: 0}
+  attackWave: 1
   objects: []
 --- !u!4 &353718867
 Transform:
@@ -314,6 +315,7 @@ MonoBehaviour:
   titlePoints: []
   reticlePoints: []
   w1t1sPoints: []
+  w1t2sPoints: []
   partLocations: []
 --- !u!1 &444772573
 GameObject:
