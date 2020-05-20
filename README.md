@@ -29,9 +29,9 @@ Please see the Wiki for status. - https://github.com/FredEckert/TailGunnerVR/wik
 
 ##### Software:
 The following tools are used for development:
-- Oculus App Version 12.0.0.306.268 (12.0.0.306.268) - https://www.oculus.com/
-- Unity 2017.4.35f1 Personal - https://unity3d.com/
-- Microsoft Visual Studio Community 2017 v15.9.18 - https://www.microsoft.com/
+- Oculus App Version 17.0.0.149.462 (17.0.0.149.462) - https://www.oculus.com/
+- Unity 2017.4.40f1 Personal - https://unity3d.com/
+- Microsoft Visual Studio Community 2017 15.9.23 - https://www.microsoft.com/
 - Visual Studio Tools for Unity 3.9.0.3 - https://unity3d.com/
 - Vectrosity 5.6 - https://starscenesoftware.com
 - Audacity 2.2.2 - https://www.audacityteam.org/

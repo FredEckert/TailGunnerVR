@@ -1,6 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable] public class _UnityEvent : UnityEvent { }
+[System.Serializable] public class _UnityEventInt : UnityEvent<int> { }
+[System.Serializable] public class _UnityEventFloat : UnityEvent<float> { }
 
 public class Manager : MonoBehaviour
 {
@@ -25,6 +30,10 @@ public class Manager : MonoBehaviour
 
     [UnityEngine.HideInInspector]
     public System.Collections.Generic.List<Transform> objects;
+
+    public _UnityEvent Bump;
+    public _UnityEventInt Incr;
+    public _UnityEventFloat Log;
 
     public static Manager use;
 
@@ -102,7 +111,11 @@ public class Manager : MonoBehaviour
                     eShip1.GetComponent<EnemyShipControl>().showPoints = true;
                     eShip1.GetComponent<EnemyShipControl>().showSpline = true;
                     break;
-
+                case "w":
+                    if (Bump != null) Bump.Invoke();
+                    if (Incr != null) Incr.Invoke(attackWave);
+                    if (Log != null) Log.Invoke(1.4455f);
+                    break;
             }
 
         }

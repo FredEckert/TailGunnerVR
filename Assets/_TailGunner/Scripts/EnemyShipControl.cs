@@ -168,4 +168,19 @@ public class EnemyShipControl : MonoBehaviour
         UnityEngine.Object.Destroy(temp.gameObject);
     }
 
+    public void Bump()
+    {
+        Debug.Log(gameObject.name + "Bump");
+    }
+
+    public void Incr(int tmp)
+    {
+        Debug.Log(gameObject.name + ": " + tmp);
+    }
+
+    public void Log(float tmp)
+    {
+        Debug.Log(gameObject.name + ": " + tmp);
+    }
+
 }
