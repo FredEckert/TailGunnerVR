@@ -20,19 +20,20 @@ Please see the Wiki for status. - https://github.com/FredEckert/TailGunnerVR/wik
 
 ##### Hardware:
 - PC
+- NVIDIA Quadro P4000
 - Oculus Rift CV1 HMD
 
 ##### Operating environment:
 - Microsoft Windows 10 Pro (x64) v20H2
 - Microsoft .NET Framework Version 4.8.04084
-- NVidia Quadro P4000 Driver Version 431.02
+- NVIDIA RTX Production Branch Driver Version R460 U3 (461.40) WHQL
 
 ##### Software:
 The following tools are used for development:
-- Oculus App Version 17.0.0.149.462 (17.0.0.149.462) - https://www.oculus.com/
+- Oculus App Version 23.0.0.43.517 (23.0.0.43.517) - https://www.oculus.com/
 - Unity 2019.4.18f1 Personal - https://unity3d.com/
-- Microsoft Visual Studio Community 2017 15.9.31 - https://www.microsoft.com/
-- Visual Studio Tools for Unity 3.9.0.3 - https://unity3d.com/
+- Microsoft Visual Studio Community 2019 16.8.4 - https://www.microsoft.com/
+- Visual Studio Tools for Unity 4.8.2.0 - https://unity3d.com/
 - Vectrosity 5.6 - https://starscenesoftware.com
 - Audacity 2.2.2 - https://www.audacityteam.org/
 - Blender 2.79b - https://www.blender.org/
