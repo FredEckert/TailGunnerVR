@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -26,7 +27,7 @@ public class Manager : MonoBehaviour
     [UnityEngine.HideInInspector]
     public GameObject eShip1;
     [UnityEngine.HideInInspector]
-    public int attackWave = 1;
+    public int attackWave = 0;
 
     [UnityEngine.HideInInspector]
     public System.Collections.Generic.List<Transform> objects;
@@ -36,6 +37,9 @@ public class Manager : MonoBehaviour
     public _UnityEventFloat Log;
 
     public static Manager use;
+
+    private int editSphereIndex = 0;
+    private GameObject editSphere;
 
     public virtual void Awake()
     {
@@ -87,38 +91,129 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //get the input
-        var input = Input.inputString;
-        //ignore null input to avoid unnecessary computation
-        if (!string.IsNullOrEmpty(input))
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            //logic related to the char pressed
-            //Debug.Log("Pressed char: " + Input.inputString);
-            switch(input)
-            {
-                case "r":
-                    Destroy(eShip1);
-                    attackWave = 1;
-                    eShip1 = Instantiate(EnemyShipPrefab);
-                    eShip1.GetComponent<EnemyShipControl>().showPoints = false;
-                    eShip1.GetComponent<EnemyShipControl>().showSpline = false;
-                    break;
-
-                case "s":
-                    Destroy(eShip1);
-                    attackWave = 2;
-                    eShip1 = Instantiate(EnemyShipPrefab);
-                    eShip1.GetComponent<EnemyShipControl>().showPoints = true;
-                    eShip1.GetComponent<EnemyShipControl>().showSpline = true;
-                    break;
-                case "w":
-                    if (Bump != null) Bump.Invoke();
-                    if (Incr != null) Incr.Invoke(attackWave);
-                    if (Log != null) Log.Invoke(1.4455f);
-                    break;
-            }
-
+            Destroy(eShip1);
+            attackWave = 0;
+            eShip1 = Instantiate(EnemyShipPrefab);
+            eShip1.GetComponent<EnemyShipControl>().showPoints = true;
+            eShip1.GetComponent<EnemyShipControl>().showSpline = true;
         }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Destroy(eShip1);
+            attackWave = 1;
+            eShip1 = Instantiate(EnemyShipPrefab);
+            eShip1.GetComponent<EnemyShipControl>().showPoints = true;
+            eShip1.GetComponent<EnemyShipControl>().showSpline = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            //if (Bump != null) Bump.Invoke();
+            //if (Incr != null) Incr.Invoke(attackWave);
+            //if (Log != null) Log.Invoke(1.4455f);
+
+            if (editSphere != null)
+                editSphere.GetComponent<MeshRenderer>().material.DisableKeyword("_EMISSION");
+            string sphereName = "Sphere" + editSphereIndex.ToString();
+            editSphere = GameObject.Find(sphereName);
+            if (editSphere != null)
+            {
+                editSphere.GetComponent<MeshRenderer>().material.EnableKeyword("_EMISSION");
+                editSphereIndex++; //Int32.Parse(editSphere.name.Substring(6, 1));
+
+            }
+            else
+            {
+                editSphereIndex = 0;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (Incr != null) Incr.Invoke(attackWave);
+        }
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if (editSphere != null)
+            {
+                Vector3 pos = editSphere.transform.position;
+                pos.y += 1;
+                editSphere.transform.position = pos;
+                editSphereIndex = Int32.Parse(editSphere.name.Substring(6, 1));
+                Debug.Log(editSphere.name + ": " + editSphereIndex);
+                LineData.use.w1t1sPoints[editSphereIndex] = pos;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if (editSphere != null)
+            {
+                Vector3 pos = editSphere.transform.position;
+                pos.y -= 1;
+                editSphere.transform.position = pos;
+                editSphereIndex = Int32.Parse(editSphere.name.Substring(6, 1));
+                Debug.Log(editSphere.name + ": " + editSphereIndex);
+                LineData.use.w1t1sPoints[editSphereIndex] = pos;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            if (editSphere != null)
+            {
+                Vector3 pos = editSphere.transform.position;
+                pos.x += 1;
+                editSphere.transform.position = pos;
+                editSphereIndex = Int32.Parse(editSphere.name.Substring(6, 1));
+                Debug.Log(editSphere.name + ": " + editSphereIndex);
+                LineData.use.w1t1sPoints[editSphereIndex] = pos;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            if (editSphere != null)
+            {
+                Vector3 pos = editSphere.transform.position;
+                pos.x -= 1;
+                editSphere.transform.position = pos;
+                editSphereIndex = Int32.Parse(editSphere.name.Substring(6, 1));
+                Debug.Log(editSphere.name + ": " + editSphereIndex);
+                LineData.use.w1t1sPoints[editSphereIndex] = pos;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            if (editSphere != null)
+            {
+                Vector3 pos = editSphere.transform.position;
+                pos.z += 1;
+                editSphere.transform.position = pos;
+                editSphereIndex = Int32.Parse(editSphere.name.Substring(6, 1));
+                Debug.Log(editSphere.name + ": " + editSphereIndex);
+                LineData.use.w1t1sPoints[editSphereIndex] = pos;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (editSphere != null)
+            {
+                Vector3 pos = editSphere.transform.position;
+                pos.z -= 1;
+                editSphere.transform.position = pos;
+                editSphereIndex = Int32.Parse(editSphere.name.Substring(6, 1));
+                Debug.Log(editSphere.name + ": " + editSphereIndex);
+                LineData.use.w1t1sPoints[editSphereIndex] = pos;
+            }
+        }
+
     }
 
     void DisplayEnemy()

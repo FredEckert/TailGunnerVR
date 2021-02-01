@@ -269,7 +269,7 @@ MonoBehaviour:
   EnemyShipPrefab: {fileID: 1762730281077590, guid: f4595052b289cec45a2bd9bee38aa2e5,
     type: 2}
   eShip1: {fileID: 0}
-  attackWave: 1
+  attackWave: 0
   objects: []
   Bump:
     m_PersistentCalls:

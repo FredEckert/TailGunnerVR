@@ -22,10 +22,10 @@ public class EnemyShipControl : MonoBehaviour
     {
         switch (Manager.use.attackWave)
         {
-            case 1:
+            case 0:
                 splinePoints = LineData.use.w1t1sPoints;
                 break;
-            case 2:
+            case 1:
                 splinePoints = LineData.use.w1t2sPoints;
                 break;
         }
@@ -33,13 +33,15 @@ public class EnemyShipControl : MonoBehaviour
         if (showPoints)
         {
             splinePointSpheres = new List<GameObject>();
+            int i = 0;
             foreach (Vector3 sPoint in splinePoints)
             {
                 GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                sphere.name = "Sphere" + i.ToString();
+                i++;
                 sphere.transform.position = sPoint;
                 sphere.GetComponent<Collider>().enabled = false;
                 sphere.GetComponent<MeshRenderer>().enabled = true;
-                sphere.GetComponent<MeshRenderer>().material.EnableKeyword("_EMISSION");
                 sphere.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", Color.magenta);
                 splinePointSpheres.Add(sphere);
             }
